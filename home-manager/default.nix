@@ -12,6 +12,7 @@
     ./gh
     ./ghostty
     ./git
+    ./glow
     ./gnupg
     ./jq
     ./lsd
