@@ -33,7 +33,7 @@
     hitoolbox.AppleFnUsageType = "Change Input Source";
     loginwindow.GuestEnabled = false;
     menuExtraClock = {
-      Show24Hours = true;
+      Show24Hour = true;
       ShowDate = 0; # When Space Allows
     };
     NSGlobalDomain = {
