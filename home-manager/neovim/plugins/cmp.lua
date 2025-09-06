@@ -12,44 +12,44 @@ local function has_words_before()
   local current_line = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
   local char_before_cursor = current_line:sub(col, col)
 
-  return char_before_cursor:match("%s") == nil
+  return char_before_cursor:match('%s') == nil
 end
 
 -- Kind icons for completion items
 local kind_icons = {
-  Text = "󰉿",
-  Method = "󰆧",
-  Function = "󰊕",
-  Constructor = "",
-  Field = "󰜢",
-  Variable = "󰀫",
-  Class = "󰠱",
-  Interface = "",
-  Module = "",
-  Property = "󰜢",
-  Unit = "󰑭",
-  Value = "󰎠",
-  Enum = "",
-  Keyword = "󰌋",
-  Snippet = "",
-  Color = "󰏘",
-  File = "󰈙",
-  Reference = "󰈇",
-  Folder = "󰉋",
-  EnumMember = "",
-  Constant = "󰏿",
-  Struct = "󰙅",
-  Event = "",
-  Operator = "󰆕",
-  TypeParameter = "",
+  Text = '󰉿',
+  Method = '󰆧',
+  Function = '󰊕',
+  Constructor = '',
+  Field = '󰜢',
+  Variable = '󰀫',
+  Class = '󰠱',
+  Interface = '',
+  Module = '',
+  Property = '󰜢',
+  Unit = '󰑭',
+  Value = '󰎠',
+  Enum = '',
+  Keyword = '󰌋',
+  Snippet = '',
+  Color = '󰏘',
+  File = '󰈙',
+  Reference = '󰈇',
+  Folder = '󰉋',
+  EnumMember = '',
+  Constant = '󰏿',
+  Struct = '󰙅',
+  Event = '',
+  Operator = '󰆕',
+  TypeParameter = '',
 }
 
 -- Source labels
 local source_labels = {
-  nvim_lsp = "[LSP]",
-  buffer = "[Buffer]",
-  path = "[Path]",
-  cmdline = "[CMD]",
+  nvim_lsp = '[LSP]',
+  buffer = '[Buffer]',
+  path = '[Path]',
+  cmdline = '[CMD]',
 }
 
 -- Tab completion behavior
@@ -91,10 +91,10 @@ cmp.setup({
     -- Smart Tab navigation (primary completion interface)
     ['<Tab>'] = cmp.mapping(tab_complete, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(shift_tab_complete, { 'i', 's' }),
-    
+
     -- Literal tab insertion
     ['<C-Tab>'] = cmp.mapping(function()
-      vim.api.nvim_put({'\t'}, 'c', false, true)
+      vim.api.nvim_put({ '\t' }, 'c', false, true)
     end, { 'i' }),
   }),
   sources = cmp.config.sources({
@@ -108,7 +108,7 @@ cmp.setup({
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = source_labels[entry.source.name]
       return vim_item
-    end
+    end,
   },
 })
 
@@ -116,16 +116,16 @@ cmp.setup({
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-  }
+    { name = 'buffer' },
+  },
 })
 
 -- Command line completion (:)
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = 'path' },
   }, {
-    { name = 'cmdline' }
-  })
+    { name = 'cmdline' },
+  }),
 })
