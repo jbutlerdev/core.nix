@@ -579,6 +579,7 @@ Window management and layout operations.
 |-----|--------|-------------|
 | `<leader><leader>` | Resume last | Resume last telescope operation |
 | `<leader>/` | Quick search | Search in current buffer |
+| `<leader>Q` | Quit all | Quit all buffers with confirmation |
 | `<leader>U` | Undo tree | Toggle undotree visualization |
 
 ---

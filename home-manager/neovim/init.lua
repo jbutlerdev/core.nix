@@ -428,3 +428,5 @@ end, { desc = 'Gist new (from buffer)' })
 vim.keymap.set('v', '<leader>ghgn', function()
   vim.cmd("'<,'>write !gh gist create")
 end, { desc = 'Gist new (from selection)' })
+
+vim.keymap.set('n', '<leader>Q', '<cmd>confirm qall<cr>', { desc = 'Quit all' })
