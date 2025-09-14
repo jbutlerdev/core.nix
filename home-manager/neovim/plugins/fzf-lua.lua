@@ -148,6 +148,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- ============================================================================
+-- ERROR DOMAIN - Enhanced diagnostic and error management
+-- ============================================================================
+
+-- Primary error operations using fzf-lua for fuzzy diagnostic search
+vim.keymap.set('n', '<leader>ee', fzf.diagnostics_document, { desc = 'Error errors (document)' })
+vim.keymap.set('n', '<leader>eE', fzf.diagnostics_workspace, { desc = 'Error Errors (workspace)' })
+
+-- ============================================================================
 -- INTROSPECTION DOMAIN - Enhanced vim state browsing
 -- ============================================================================
 

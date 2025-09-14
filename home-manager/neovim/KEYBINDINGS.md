@@ -641,11 +641,10 @@ Window management and layout operations.
 ### Error Operations (Leader)
 | Key | Action | Description |
 |-----|--------|-------------|
-| `<leader>ee` | Error details | Show error at cursor |
-| `<leader>el` | Error list | Document diagnostics |
-| `<leader>eL` | Error List (workspace) | Workspace diagnostics |
-| `<leader>eq` | Error quickfix | Quickfix list |
-| `<leader>ea` | Error all | Full trouble interface |
+| `<leader>ee` | Error errors (document) | Fuzzy search document diagnostics |
+| `<leader>eE` | Error Errors (workspace) | Fuzzy search workspace diagnostics |
+| `<leader>eh` | Error hover details | Show error details at cursor |
+| `<leader>eq` | Error quickfix | Trouble quickfix list |
 
 ### Error Toggles
 | Key | Action | Description |

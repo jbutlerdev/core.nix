@@ -449,3 +449,61 @@ vim.keymap.set('n', '<leader>sr', function()
     end
   end
 end, { desc = 'Search replace' })
+
+-- ===============================================
+-- DOCUMENTED ERROR DOMAIN (<leader>e) - Moved from trouble.lua
+-- Per KEYBINDINGS.md - Non-trouble specific diagnostic operations
+-- ===============================================
+
+-- Error Details
+vim.keymap.set('n', '<leader>eh', function()
+  vim.diagnostic.open_float({ border = 'rounded' })
+end, { desc = 'Error hover details' })
+
+-- Error Toggles
+vim.keymap.set('n', '<leader>etd', function()
+  if vim.diagnostic.is_enabled() then
+    vim.diagnostic.enable(false)
+    vim.notify('Diagnostics disabled', vim.log.levels.INFO)
+  else
+    vim.diagnostic.enable()
+    vim.notify('Diagnostics enabled', vim.log.levels.INFO)
+  end
+end, { desc = 'Error toggle diagnostics' })
+
+vim.keymap.set('n', '<leader>etv', function()
+  local current = vim.diagnostic.config().virtual_text
+  vim.diagnostic.config({ virtual_text = not current })
+  vim.notify('Virtual text ' .. (current and 'disabled' or 'enabled'), vim.log.levels.INFO)
+end, { desc = 'Error toggle virtual' })
+
+vim.keymap.set('n', '<leader>ets', function()
+  local current = vim.diagnostic.config().signs
+  vim.diagnostic.config({ signs = not current })
+  vim.notify('Diagnostic signs ' .. (current and 'disabled' or 'enabled'), vim.log.levels.INFO)
+end, { desc = 'Error toggle signs' })
+
+-- Error Navigation (Sequential)
+-- [d / ]d - Previous/next diagnostic
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.goto_prev({ float = { border = 'rounded' } })
+end, { desc = 'Previous diagnostic' })
+
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.goto_next({ float = { border = 'rounded' } })
+end, { desc = 'Next diagnostic' })
+
+-- [D / ]D - First/last diagnostic in file  
+vim.keymap.set('n', '[D', function()
+  vim.diagnostic.goto_prev({ float = { border = 'rounded' }, wrap = false })
+  -- Go to first diagnostic by going to start and finding first
+  vim.cmd('normal! gg')
+  vim.diagnostic.goto_next({ float = false, wrap = false })
+end, { desc = 'First diagnostic' })
+
+vim.keymap.set('n', ']D', function()
+  vim.diagnostic.goto_next({ float = { border = 'rounded' }, wrap = false })
+  -- Go to last diagnostic by going to end and finding last  
+  vim.cmd('normal! G')
+  vim.diagnostic.goto_prev({ float = false, wrap = false })
+end, { desc = 'Last diagnostic' })
