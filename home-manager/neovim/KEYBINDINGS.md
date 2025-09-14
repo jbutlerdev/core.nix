@@ -588,7 +588,7 @@ Window management and layout operations.
 ### Special Access
 | Key | Action | Description |
 |-----|--------|-------------|
-| `<leader><leader>` | Global picker | **Global picker (VS Code-like unified search)** |
+| `<leader><leader>` | Global picker | **Global picker** |
 | `<leader>.` | Resume last | Resume last fzf-lua operation |
 | `<leader>/` | Quick search | Search in current buffer |
 | `<leader>Q` | Quit all | Quit all buffers with confirmation |

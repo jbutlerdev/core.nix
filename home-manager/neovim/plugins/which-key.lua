@@ -249,7 +249,7 @@ which_key.add({
   { '<leader>uw', desc = 'UI wrap' },
 
   -- Quick access
-  { '<leader><leader>', desc = 'Global picker (VS Code-like)' },
+  { '<leader><leader>', desc = 'Global picker' },
   { '<leader>/', desc = 'Quick search', icon = icons.search },
   {
     '<leader>?',
