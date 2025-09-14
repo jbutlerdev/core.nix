@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set(
       'n',
       'gy',
-      fzf.lsp_type_definitions,
+      fzf.lsp_typedefs,
       vim.tbl_extend('force', opts, { desc = 'Go to type definition' })
     )
     vim.keymap.set('n', 'gr', fzf.lsp_references, vim.tbl_extend('force', opts, { desc = 'Go to references' }))
