@@ -22,6 +22,9 @@ fzf.setup({
   },
 })
 
+-- Register fzf-lua as the vim.ui.select backend for consistent fuzzy selection
+fzf.register_ui_select()
+
 -- ============================================================================
 -- FILES DOMAIN - Enhanced file operations
 -- ============================================================================
