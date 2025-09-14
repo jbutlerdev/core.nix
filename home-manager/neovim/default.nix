@@ -236,6 +236,14 @@
       }
       # Provides Nerd Font icons for use by plugins.
       nvim-web-devicons
+      # Minimal telescope for aerial compatibility.
+      {
+        plugin = telescope-nvim;
+        type = "lua";
+        config = ''
+          require('telescope').setup({})
+        '';
+      }
       # Helps you remember your keymaps, by showing available keybindings in a popup as you type.
       {
         plugin = which-key-nvim;
