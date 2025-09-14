@@ -1,3 +1,12 @@
+-- Prevent telescope integration errors by providing mock telescope module
+-- This prevents aerial's telescope extension from trying to register when telescope isn't available
+if not pcall(require, 'telescope') then
+  package.loaded['telescope'] = {
+    register_extension = function() end,
+    config = { values = {} }
+  }
+end
+
 local aerial = require('aerial')
 
 -- Configure aerial for automatic code structure visualization
