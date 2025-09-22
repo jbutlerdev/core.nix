@@ -3,7 +3,7 @@ auto-update = off
 
 # Font settings
 font-size = 14
-font-family = Monaspace Xenon
+font-family = MonaspiceXe Nerd Font
 
 # Window settings
 background-opacity = 0.90
