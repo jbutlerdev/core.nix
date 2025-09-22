@@ -7,7 +7,6 @@
     nerd-fonts.fira-code
     nerd-fonts.monaspace
     nerd-fonts.victor-mono
-    nerd-fonts.fira-code
   ];
 }
 
