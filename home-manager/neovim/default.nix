@@ -32,28 +32,15 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      # A code outline window for skimming and quick navigation. - TODO: FIXME!!
-      # {
-      #   plugin = aerial-nvim;
-      #   type = "lua";
-      #   config = builtins.readFile ./plugins/aerial.lua;
-      # }
+      # A code outline window for skimming and quick navigation.
+      {
+        plugin = aerial-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/aerial.lua;
+      }
       # Seamless integration with Claude Code.
       {
-        plugin = pkgs.vimUtils.buildVimPlugin {
-          pname = "claudecode-nvim";
-          version = "2024-12-15";
-          src = pkgs.fetchFromGitHub {
-            owner = "coder";
-            repo = "claudecode.nvim";
-            rev = "v0.3.0";
-            sha256 = "sha256-sOBY2y/buInf+SxLwz6uYlUouDULwebY/nmDlbFbGa8=";
-          };
-          # Patch to make config options actually work - TODO: see if this is no longer needed.
-          # patches = [
-          #   ./patches/claudecode-split.patch # Respect vertical_split setting
-          # ];
-        };
+        plugin = claudecode-nvim;
         type = "lua";
         config = builtins.readFile ./plugins/claudecode.lua;
       }
