@@ -48,7 +48,9 @@
 
       # Ruby development
       ruby
-      rubyPackages.rdbg # Ruby debugger
+      # rubyPackages.rdbg # Ruby debugger - not available in nixpkgs yet
+      # TODO: rdbg is the new Ruby 3.1+ debugger, needs to be packaged for nix
+      rubyPackages.byebug # Alternative Ruby debugger
 
       # Build tools for telescope-fzf-native
       gcc
