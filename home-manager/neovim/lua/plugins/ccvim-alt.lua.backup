@@ -1,0 +1,60 @@
+-- Alternative configuration - rename to ccvim.lua if the current one doesn't work
+return {
+  {
+    dir = "~/git/ccvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      -- Manual setup since auto-detection might fail
+      vim.opt.runtimepath:append("~/git/ccvim")
+      
+      local ok, ccvim = pcall(require, "ccvim")
+      if not ok then
+        vim.notify("Failed to load ccvim module", vim.log.levels.ERROR)
+        return
+      end
+      
+      if not vim.env.OPENAI_API_KEY then
+        vim.notify(
+          "ccvim: OPENAI_API_KEY not set. Please set it in your environment.",
+          vim.log.levels.WARN
+        )
+        return
+      end
+      
+      ccvim.setup({
+        model = "gpt-3.5-turbo",
+        temperature = 0.7,
+        max_tokens = 150,
+        completion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce_ms = 300,
+          min_chars = 3,
+          max_context_lines = 50,
+        },
+        chat = {
+          enabled = true,
+          split_size = 40,
+          split_position = "right",
+        },
+        keymaps = {
+          accept_suggestion = "<Tab>",
+          accept_word = "<S-Tab>",
+          dismiss_suggestion = "<C-]>",
+          trigger_suggestion = "<C-f>",
+          open_chat = "<leader>ai",
+          open_settings = "<leader>as",
+        },
+      })
+      
+      -- Define keymaps
+      vim.keymap.set("n", "<leader>ai", "<cmd>CcvimChat<cr>", { desc = "Open AI Chat" })
+      vim.keymap.set("n", "<leader>as", "<cmd>CcvimSettings<cr>", { desc = "AI Settings" })
+      vim.keymap.set("v", "<leader>ai", "<cmd>CcvimChatSelection<cr>", { desc = "Send to AI Chat" })
+    end,
+  },
+}

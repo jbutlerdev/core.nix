@@ -1,0 +1,48 @@
+-- AI-powered code completion and chat plugin
+-- Temporarily disabled
+return {
+  -- {
+  --   name = "ccvim",
+  --   dir = vim.fn.expand("~/git/ccvim"),
+  --   lazy = false,  -- Load immediately
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   config = function()
+  --     -- Add to runtimepath to ensure modules can be found
+  --     vim.opt.runtimepath:append(vim.fn.expand("~/git/ccvim"))
+  --     
+  --     -- Check for API key
+  --     if not vim.env.OPENAI_API_KEY then
+  --       vim.notify(
+  --         "ccvim: OPENAI_API_KEY not set. Please set it in your environment.",
+  --         vim.log.levels.WARN
+  --       )
+  --     end
+  --     
+  --     -- Load and setup the plugin
+  --     local ok, ccvim = pcall(require, "ccvim")
+  --     if not ok then
+  --       vim.notify("Failed to load ccvim: " .. tostring(ccvim), vim.log.levels.ERROR)
+  --       return
+  --     end
+  --     
+  --     -- Only pass keymaps, let saved settings handle the rest
+  --     ccvim.setup({
+  --       keymaps = {
+  --         accept_suggestion = "<Tab>",
+  --         accept_word = "<S-Tab>",
+  --         dismiss_suggestion = "<C-]>",
+  --         trigger_suggestion = "<C-f>",
+  --         open_chat = "<leader>ai",
+  --         open_settings = "<leader>as",
+  --       },
+  --     })
+  --   end,
+  --   keys = {
+  --     { "<leader>ai", "<cmd>CcvimChat<cr>", desc = "Open AI Chat" },
+  --     { "<leader>as", "<cmd>CcvimSettings<cr>", desc = "AI Settings" },
+  --     { "<leader>ai", mode = "v", "<cmd>CcvimChatSelection<cr>", desc = "Send to AI Chat" },
+  --   },
+  -- },
+}
