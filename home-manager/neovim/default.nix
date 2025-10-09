@@ -69,16 +69,18 @@
   };
 
   # Copy lazy-lock.json from personal config to maintain plugin versions
-  xdg.configFile."nvim/lazy-lock.json" = {
-    source = /Users/jbutler/dotfiles/personal/config/nvim/lazy-lock.json;
-  };
+  # TODO: Copy these files to the repository instead of using absolute paths
+  # For now, commenting out to fix pure evaluation mode error
+  # xdg.configFile."nvim/lazy-lock.json" = {
+  #   source = /Users/jbutler/dotfiles/personal/config/nvim/lazy-lock.json;
+  # };
 
-  # Copy other config files
-  xdg.configFile."nvim/stylua.toml" = {
-    source = /Users/jbutler/dotfiles/personal/config/nvim/stylua.toml;
-  };
+  # # Copy other config files
+  # xdg.configFile."nvim/stylua.toml" = {
+  #   source = /Users/jbutler/dotfiles/personal/config/nvim/stylua.toml;
+  # };
 
-  xdg.configFile."nvim/.neoconf.json" = {
-    source = /Users/jbutler/dotfiles/personal/config/nvim/.neoconf.json;
-  };
+  # xdg.configFile."nvim/.neoconf.json" = {
+  #   source = /Users/jbutler/dotfiles/personal/config/nvim/.neoconf.json;
+  # };
 }
