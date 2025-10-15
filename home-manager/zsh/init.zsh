@@ -42,40 +42,74 @@ function gh-issues() {
       --limit 1000
   else
     # Markdown output with specific fields
-    # First get the issues with project items to access filter field
-    local issues_json=$(gh issue list \
-      --repo jbutlerdev/notes \
-      --state open \
-      --json number,title,body,projectItems \
-      --limit 1000)
-
-    # Process and format as markdown
-    echo "$issues_json" | jq -r '.[] |
+    # Use gh API with GraphQL for better project field access
+    gh api graphql -f query='
+      query {
+        repository(owner: "jbutlerdev", name: "notes") {
+          issues(first: 100, states: OPEN) {
+            nodes {
+              number
+              title
+              body
+              projectItems(first: 10) {
+                nodes {
+                  project {
+                    title
+                  }
+                  fieldValues(first: 10) {
+                    nodes {
+                      ... on ProjectV2ItemFieldSingleSelectValue {
+                        name
+                        field {
+                          ... on ProjectV2SingleSelectField {
+                            name
+                          }
+                        }
+                      }
+                      ... on ProjectV2ItemFieldTextValue {
+                        text
+                        field {
+                          ... on ProjectV2Field {
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ' | jq -r '.data.repository.issues.nodes[] |
       "## Issue #\(.number): \(.title)\n" +
       if .body != null and .body != "" then
         "\(.body)\n"
       else
         "*No description*\n"
       end +
-      if (.projectItems | length) > 0 then
+      if (.projectItems.nodes | length) > 0 then
         (
-          .projectItems |
+          .projectItems.nodes |
           map(
-            if .fieldValues != null then
-              (.fieldValues |
+            if (.fieldValues.nodes | length) > 0 then
+              (.fieldValues.nodes |
                 map(
-                  if .name != null then
+                  if .name != null and .field.name == "Filter" then
                     "**Filter:** \(.name)"
+                  elif .text != null and .field.name == "Filter" then
+                    "**Filter:** \(.text)"
                   else
                     empty
                   end
-                ) | join("\n")
+                ) | join("")
               )
             else
               empty
             end
-          ) | join("\n")
-        ) + "\n"
+          ) | join("")
+        ) + (if (.projectItems.nodes | map(.fieldValues.nodes | map(select(.name != null or .text != null)) | length) | add // 0) > 0 then "\n" else "" end)
       else
         ""
       end +
