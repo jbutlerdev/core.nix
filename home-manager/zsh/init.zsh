@@ -116,3 +116,6 @@ function gh-issues() {
       "---\n"'
   fi
 }
+
+# Alias for rendered gh-issues output
+alias gh-issues-pretty="gh-issues | glow -"
