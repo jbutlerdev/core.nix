@@ -3,9 +3,6 @@
   programs.claude-code = {
     enable = true;
     settings = {
-      feedbackSurveyState = {
-        lastShownTime = 1754753318519;
-      };
       statusLine = {
         type = "command";
         command = "claude-statusline";
