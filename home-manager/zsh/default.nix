@@ -11,6 +11,9 @@
       ZSH_THEME_TERM_TAB_TITLE_IDLE = "🐚 %~";
       ZSH_THEME_TERM_TITLE_IDLE = "🐚 %~";
     };
+    shellAliases = {
+      nvimdiff = "nvim -d";
+    };
     oh-my-zsh = {
       enable = true;
       plugins = [

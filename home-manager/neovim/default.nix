@@ -18,6 +18,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true; # This enables nvimdiff command
     withRuby = true; # Needed for Ruby LSP and debugging
     withNodeJs = true; # Needed for various plugins
     withPython3 = true; # Needed for some plugins

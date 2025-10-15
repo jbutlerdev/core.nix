@@ -38,7 +38,7 @@ function gh-issues() {
     gh issue list \
       --repo jbutlerdev/notes \
       --state open \
-      --json assignees,author,body,closed,closedAt,comments,createdAt,id,isPinned,labels,locked,milestone,number,projectCards,projectItems,reactions,reactionGroups,state,title,updatedAt,url \
+      --json assignees,author,body,closed,closedAt,comments,createdAt,id,isPinned,labels,milestone,number,projectCards,projectItems,reactionGroups,state,stateReason,title,updatedAt,url \
       --limit 1000
   else
     # Markdown output with specific fields
