@@ -4,6 +4,8 @@
     CustomUserPreferences = {
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
+          "32".enabled = false; # Mission Control (Ctrl+Up)
+          "34".enabled = false; # Application Windows (Ctrl+Down)
           "60".enabled = false; # Show Spotlight Search (Ctrl+Space)
           "61".enabled = false; # Show Finder Search (Ctrl+Opt+Space)
           "64".enabled = false; # Spotlight Menu (Cmd+Space)
