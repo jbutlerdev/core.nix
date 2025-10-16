@@ -13,7 +13,7 @@
     extraConfig = {
       core = {
         autocrlf = "input";
-        editor = "code -w";
+        editor = "vim";
       };
       init.defaultBranch = "main";
       pull.rebase = true;

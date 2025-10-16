@@ -6,6 +6,8 @@
   programs.zsh = {
     enable = true;
     sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
       ZSH_THEME_TERM_TAB_TITLE_IDLE = "🐚 %~";
