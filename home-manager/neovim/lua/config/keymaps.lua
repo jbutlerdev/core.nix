@@ -63,3 +63,36 @@ vim.keymap.set("n", "<leader>i", ":tabprevious<CR>", {
 vim.keymap.set("n", "<leader>o", ":tabNext<CR>", {
   desc = "next tab",
 })
+
+-- File path yanking
+vim.keymap.set("n", "<leader>yr", function()
+  local path = vim.fn.expand("%")
+  print("Relative path: " .. path)
+  vim.fn.setreg("+", path)
+  vim.fn.setreg("*", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Yank relative file path" })
+
+vim.keymap.set("n", "<leader>ya", function()
+  local path = vim.fn.expand("%:p")
+  print("Absolute path: " .. path)
+  vim.fn.setreg("+", path)
+  vim.fn.setreg("*", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Yank absolute file path" })
+
+vim.keymap.set("n", "<leader>yf", function()
+  local path = vim.fn.expand("%:t")
+  print("Filename: " .. path)
+  vim.fn.setreg("+", path)
+  vim.fn.setreg("*", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Yank filename only" })
+
+vim.keymap.set("n", "<leader>yl", function()
+  local path = vim.fn.expand("%") .. ":" .. vim.fn.line(".")
+  print("Path with line: " .. path)
+  vim.fn.setreg("+", path)
+  vim.fn.setreg("*", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Yank file path with line number" })
