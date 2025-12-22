@@ -78,26 +78,3 @@ vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
   end,
 })
 
--- Dev check autocmds for Shopify development
--- Run type-check and tests automatically on save for Ruby/TS/JS files
--- This is supplementary to the plugin configuration
-local dev_check_group = vim.api.nvim_create_augroup("DevCheckNotification", { clear = true })
-
--- Show a notification when entering a file that will be auto-checked
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = dev_check_group,
-  pattern = { "*.rb", "*.ts", "*.tsx", "*.js", "*.jsx" },
-  callback = function()
-    -- Only show once per session per file
-    local filepath = vim.fn.expand("%:p")
-    if not vim.g.dev_check_notified then
-      vim.g.dev_check_notified = {}
-    end
-    if not vim.g.dev_check_notified[filepath] then
-      vim.g.dev_check_notified[filepath] = true
-      vim.defer_fn(function()
-        vim.notify("Dev checks enabled for this file (use <leader>dt to toggle)", vim.log.levels.INFO)
-      end, 100)
-    end
-  end,
-})
