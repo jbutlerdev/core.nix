@@ -69,10 +69,11 @@ return {
     servers = {
       sorbet = { mason = false },
       -- rubocop = { mason = false },
-      ruby_lsp = {
-        mason = false,
-        cmd = { vim.fn.expand("~/.gem/ruby/3.4.4/bin/ruby-lsp") },
-      },
+      -- ruby_lsp disabled: managed by shadowenv.lua in Shopify overlay
+      -- ruby_lsp = {
+      --   mason = false,
+      --   cmd = { vim.fn.expand("~/.gem/ruby/3.4.4/bin/ruby-lsp") },
+      -- },
       marksman = {},
     },
     setup = Setup,
