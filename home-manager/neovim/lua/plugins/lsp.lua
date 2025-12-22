@@ -38,11 +38,6 @@ end
 
 Setup = {
   ruby_lsp = function(_, opts)
-    -- Use absolute path since GUI-launched Neovim may not have full shell PATH
-    local ruby_lsp_path = vim.fn.expand("~/.gem/ruby/3.4.4/bin/ruby-lsp")
-    if vim.fn.executable(ruby_lsp_path) == 1 then
-      opts.cmd = { ruby_lsp_path }
-    end
     opts.on_attach = function(client, buffer)
       add_ruby_deps_command(client, buffer)
     end
@@ -74,7 +69,10 @@ return {
     servers = {
       sorbet = { mason = false },
       -- rubocop = { mason = false },
-      ruby_lsp = { mason = false },
+      ruby_lsp = {
+        mason = false,
+        cmd = { vim.fn.expand("~/.gem/ruby/3.4.4/bin/ruby-lsp") },
+      },
       marksman = {},
     },
     setup = Setup,
