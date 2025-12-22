@@ -69,7 +69,7 @@ return {
     servers = {
       sorbet = { mason = false },
       -- rubocop = { mason = false },
-      ruby_lsp = {},
+      ruby_lsp = { mason = false },
       marksman = {},
     },
     setup = Setup,
