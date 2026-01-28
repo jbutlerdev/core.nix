@@ -28,7 +28,7 @@
       # Language servers
       lua-language-server
       nil # Nix LSP
-      marksman # Markdown LSP
+      # marksman # Markdown LSP - disabled: pulls in .NET runtime → Swift build chain
       typescript-language-server
       nodePackages.vscode-langservers-extracted # HTML/CSS/JSON LSP
       rubyPackages.solargraph # Alternative Ruby LSP
